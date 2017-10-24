@@ -22,5 +22,5 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   declarations: [CommonTranslateModule],
   bootstrap: [CommonTranslateModule]
 })
-export class CommonTranslateModule {
+export declare class CommonTranslateModule {
 }
