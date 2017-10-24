@@ -9,7 +9,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonTranslateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -18,8 +18,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       }
     })
   ],
-  declarations: [CommonModule],
-  bootstrap: [CommonModule]
+  exports: [CommonTranslateModule],
+  declarations: [CommonTranslateModule],
+  bootstrap: [CommonTranslateModule]
 })
-export class CommonModule {
+export class CommonTranslateModule {
 }
