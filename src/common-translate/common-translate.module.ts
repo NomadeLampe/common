@@ -1,7 +1,14 @@
 import {NgModule} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {
+  TranslateDirective,
+  TranslateLoader,
+  TranslateModule,
+  TranslatePipe,
+  TranslateService
+} from '@ngx-translate/core';
+import {CommonModule} from '@angular/common';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -9,7 +16,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({
   imports: [
-    CommonTranslateModule,
+    HttpClientModule,
+    CommonModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -18,9 +26,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       }
     })
   ],
-  exports: [CommonTranslateModule],
-  declarations: [CommonTranslateModule],
-  bootstrap: [CommonTranslateModule]
+  providers: [TranslateService],
+  exports: [
+    CommonModule,
+    TranslateModule,
+    TranslatePipe,
+    TranslateDirective
+  ]
 })
-export declare class CommonTranslateModule {
+export class CommonTranslateModule {
 }
